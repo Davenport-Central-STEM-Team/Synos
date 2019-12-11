@@ -6,7 +6,7 @@ NULL_CHAR = chr(0)
 
 def write_report(report):
     with open('/dev/hidg0', 'rb+') as fd:
-        fd.write(report.encode())
+        fd.write(report.encode('latin-1'))
 
 
 def write_null():
@@ -27,14 +27,11 @@ def signed_int_to_hex(input=0):
 
     if number < 0:
         number += (1 << 8)
-        hexValue = hex(number)[1:]
-        hexQ = '\x7f'
-        print("Hex Value" + hexValue)
-        print("Int Value", int(hexValue))
-        return hexQ.decode()
+        hexValue = hex(number)
+        return chr(int(hexValue, 16))
     elif number >= 0:
         hexValue = hex(number)
-        return chr(int(hexValue))
+        return chr(int(hexValue, 16))
     else:
         pass
 
@@ -52,10 +49,15 @@ def rightClick():
 
 
 def move_mouse(x, y):
-    print(signed_int_to_hex(x), signed_int_to_hex(y))
+    print(signed_int_to_hex(x))
     write_report(NULL_CHAR + signed_int_to_hex(x) + signed_int_to_hex(y))
 
 
-# move_mouse(127, 127)
-# write_report(NULL_CHAR + chr(signed_int_to_hex(x)) + NULL_CHAR)
-signed_int_to_hex(-127)
+def fuckit(hex):
+    number = int(hex, 16)
+    print(number)
+    character = chr(number)
+    print(character.encode('latin-1'))
+
+
+move_mouse(-127, -127)
