@@ -22,21 +22,21 @@ __class__ = None
 class MouseControl:
 
     # Angle for continuous movement
-    _angle = 0
+    angle = 0
     # Speed for continuous movement
-    _speed = 0
+    speed = 0
     # Boolean for if cursor is currently performing continuous movement
-    _cursorIsMoving = False
+    cursorIsMoving = False
 
     """ Return angle for continuous movement """
     @property
-    def angle(self):
-        return self._angle
+    def getAngle(self):
+        return self.angle
 
     """ Return speed for continuous movement """
     @property
-    def speed(self):
-        return self._speed
+    def getSpeed(self):
+        return self.speed
 
     """ Convert a signed integer to its' corresponding 32 bit hex value
     :param intIn: signed 32 bit integer to be converted
@@ -86,9 +86,9 @@ class MouseControl:
     def moveCursorXY(self, x, y):
         Hid.write_report(Hid.NULL_CHAR + self.signed_int_to_hex(x) + self.signed_int_to_hex(-y))
 
-    if _cursorIsMoving:
-        thetaX = math.cos(_angle) * _speed
-        thetaY = math.sin(_angle) * _speed
-        moveCursorXY(thetaX, thetaY)
-    else:
-        Hid.write_null()
+    """ Move on-screen cursor with angle and speed"""
+    # def moveCursorTheta(self):
+    #     xMove = round(math.cos(self.angle) * self.speed)
+    #     yMove = round(math.sin(self.angle) * self.speed)
+    #     print("Cursor X:", xMove, "Cursor Y", yMove)
+    #     self.moveCursorXY(xMove, yMove)
