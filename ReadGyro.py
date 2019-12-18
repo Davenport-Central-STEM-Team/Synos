@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 from mpu9250 import Mpu9250
-from time import sleep
+import time
+import matplotlib.pyplot as plot
 
 imu = Mpu9250()
 
@@ -18,19 +19,33 @@ class ReadGyro(object):
         self.trigger_angle = trigger_angle
         self.initGyro = imu.gyro
         self.trigger_set = False
+        self.xValues = []
+        self.times = []
+        self.startTime = time.time()
 
         print("Init @: X - ", self.initGyro[0], "Y - ", self.initGyro[1], "Z - ", self.initGyro[2])
         
     def check_angle(self):
         # Check if the status is triggered or not to start loop
+        currentGyro = imu.gyro
         while not self.trigger_set:
-            for int(i) in imu.gyro:
-                if imu.gyro[i] > self.trigger_angle:
+            for i in currentGyro:
+                if currentGyro[i] > self.trigger_angle:
                     trigger_set = True
                     print("Gyro: ", imu.gyro, type(imu.gyro))
 
-        sleep(2)
+        time.sleep(2)
         self.trigger_set = False
+
+    def plot(self):
+        for i in range(100):
+            self.xValues.append(imu.gyro[0])
+            self.times.append(time.time())
+            print(imu.gyro[0])
+            time.sleep(1)
+
+        plot.plot(self.times, self.xValues)
+        plot.show()
 
     # @staticmethod
     # def getAccel():
@@ -41,7 +56,11 @@ class ReadGyro(object):
     #     return imu.gyro
 
 
-gyro = ReadGyro(15)
-sleep(10)
-while True:
-    gyro.check_angle()
+# gyro = ReadGyro(15)
+# time.sleep(10)
+# while True:
+#     gyro.check_angle()
+
+readGyro = ReadGyro(1)
+
+readGyro.plot()
