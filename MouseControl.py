@@ -14,12 +14,12 @@ __author__ = 'Nick Vazquez, Nick Wisong'
 __copyright__ = 'Copyright 2019, DCHS STEM Team'
 __license__ = 'MIT'
 __version__ = '0.1.0'
-__email__ = 'vazqueznicholas1@gmail.com'
+__email__ = ''
 __status__ = "In Development"
 __class__ = None
 
 
-class MouseControl:
+class MouseControl(object):
 
     # Angle for continuous movement
     angle = 0

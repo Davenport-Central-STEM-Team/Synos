@@ -12,7 +12,7 @@ __author__ = 'Nick Vazquez, Nick Wisong'
 __copyright__ = 'Copyright 2019, DCHS STEM Team'
 __license__ = 'MIT'
 __version__ = '0.1.0'
-__email__ = 'vazqueznicholas1@gmail.com'
+__email__ = ''
 __status__ = "In Development"
 __class__ = None
 
@@ -50,4 +50,7 @@ __class__ = None
 #
 # # Release all keys
 # write_report(NULL_CHAR*8)
+
+Hid.write_report_keyboard(Hid.NULL_CHAR*2 + chr(4) + Hid.NULL_CHAR*5)
+print("IUGHNGSJG")
 
