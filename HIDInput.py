@@ -22,5 +22,10 @@ def write_report(report):
         fd.write(report.encode('latin-1'))
 
 
+def write_report_keyboard(report):
+    with open(CommPort, 'rb+') as fd:
+        fd.write(report)
+
+
 def write_null():
-    write_report(NULL_CHAR*3)
+    write_report(NULL_CHAR * 3)
