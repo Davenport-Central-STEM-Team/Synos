@@ -103,10 +103,10 @@ class ReadGyro(object):
         plot.plot(self.times, self.zValues)
         plot.show()
 
-    def smooth(self, list):
+    def smooth(self, data):
         temp_sum = 0
         new_list = []
-        for i in range(len(list)):
+        for i in enumerate(data)):
             # print(i)
             # print(list)
             # print(list[i])
@@ -119,7 +119,7 @@ class ReadGyro(object):
     @staticmethod
     def smoother(raw_list):
         new_list = []
-        for i in range(len(raw_list)):
+        for i in enumerate(raw_list)):
             if 0 < i < len(raw_list) - 1:
                 new_list.append(0.25 * raw_list[i-1]
                                 + 0.5 * raw_list[i]
