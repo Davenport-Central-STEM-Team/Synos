@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="sarah@raspberrypi.local:22" createEmptyFolders="true">
-    <serverData>
-      <paths name="CAT Pi">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/tmp/pycharm_project_161" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="sarah@raspberrypi.local:22">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/tmp/pycharm_project_610" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
-    </serverData>
+  <component name="PublishConfigData" autoUpload="Always" createEmptyFolders="true">
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
