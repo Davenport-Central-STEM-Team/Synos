@@ -9,3 +9,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
